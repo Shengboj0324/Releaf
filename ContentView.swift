@@ -3,7 +3,7 @@ import UIKit
 
 struct ColorPalette {
     static let background = Color(red: 0.6, green: 0.75, blue: 0.65)
-    static let topCard    = Color(red: 0.45, green: 0.6, blue: 0.45)
+    static let topCard    = Color(red: 0.45, green: 0.6, blue: 0.35)
     static let cardBG     = Color(red: 0.90, green: 0.90, blue: 0.80)
     static let textMain   = Color.white
     static let textSub    = Color.white.opacity(0.9)
@@ -866,6 +866,7 @@ struct DiscoverView: View {
 
 
 
+
 // MARK: - 9. Bottom Bar with Magnification & Tab Switching
 
 struct BottomBar: View {
@@ -915,6 +916,7 @@ struct BottomBar: View {
         .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 0)
         .padding(.horizontal, 16)
         .padding(.bottom, 8)
+        
     }
 }
 
@@ -966,14 +968,15 @@ struct ContentView: View {
         ZStack {
             switch selectedTab {
             case 0:
-                HomeView()
+                NavigationView {HomeView()}
             case 1:
-                TreesView()
+                NavigationView {TreesView()}
             case 2:
-                DiscoverView()
+                NavigationView {DiscoverView()}
             case 3:
-                ProfileView()
-            default: HomeView()
+                NavigationView {ProfileView()}
+            default:
+                NavigationView {HomeView()}
             }
             
             VStack {
